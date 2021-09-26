@@ -1,0 +1,60 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container-nav{
+    margin: auto;
+    height: 60px;
+    background-color: burlywood;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.cart-item{
+    position:absolute; right:50px; font-size: 28px; margin-top: 10px;
+}
+
+.container-body{
+    margin-top: 30px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: cadetblue;
+}
+.add-item{
+    background-color: coral;
+}
+.container-table{
+    margin-top: 10px;
+    background-color: chartreuse;
+    border:3px solid black;
+}
+
+.table{
+    width: 800px;
+}
+.table td{
+    padding-top: 5px;
+}
+.table-top td{
+    background-color: darkolivegreen;
+}
+
+.table-data{
+    background-color: burlywood;
+}
+
+.table-data td{
+    border-top: 1px solid black;
+}
+.table-data :hover{
+    background-color: cyan;
+}
+
+.action-btn{
+    display: flex;
+    justify-content: space-around;
+}

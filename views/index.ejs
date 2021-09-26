@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onizuka</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav> 
+        <div class = "container-nav">
+             Ambika's Store
+             <div class="cart-item">
+                 <a href ="/cart">Cart <span>0</span>
+                 </a>
+             </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container-body">
+            <div class="add-item">
+                <a href="/p/Add_item">New Item</a>
+            </div>
+            <form action="/" method="POST">
+                <div class = "container-table">
+                    <table class="table">
+                        <tr class="table-top">
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                            <td>Action</td>
+                        </tr>
+                        <tbody class="table-data">
+                            <% for(var i = 0; i < users.length; i++) { %>
+                                <tr>
+                                    <td class ="item-name"><%= users[i].Name %></td>
+                                    <td class ="item-rate"><%= users[i].Rate %></td>
+                                    <td class ="item-quantity"><%= users[i].Quantity %></td>
+                                    <td class="action-btn">
+                                        <a href="#" class="action-btn-add"> + </a> 
+                                        <!--<button> - </button> 
+                                        <button> up</button>
+                                        -->
+                                    </td>
+                                </tr>
+                                <% } %>
+                                
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+        
+    </main>
+
+    <footer></footer>
+
+
+
+<script type="text/javascript" src="js/functionality.js"> </script>
+</body>
+</html>

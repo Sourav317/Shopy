@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onizuka</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav> 
+        <div class = "container-nav">
+             Add New Item
+        </div>
+    </nav>
+
+    <main>
+        <div class="container-body">
+            <div class="add-item">
+                <a href="/">Back</a>
+            </div>
+            <form action ="/p/new" method="POST">
+                <label for="fname" >Name:</label>
+                <input type="text" id="name" name="name" placeholder="Item + Qunt like (1*3Kg)"><br><br>
+                <!--
+                    If u r using postman to send data then follow the steps
+                    1. Do POST request from dropdown
+                    2. give the URL click on the body radio button
+                    3. select raw and then select JSON format on right
+                    4. give in JSON format data. Use the naming convention used in form > input tag> name
+{
+"name":"PICK DTGT. POWDER(1 kg*25)",
+"quantity":"5",
+"price":"1061.36"
+} 
+                -->
+                <!--
+                <label for="lname">HSN:</label>
+                <input type="radio">
+                <label for="html">3401</label><br>
+                -->
+                <label for="lname">Quantity:</label>
+                <input type="text" id="quantity" name="quantity"><br><br>
+                <label for="lname">Price:</label>
+                <input type="text" id="price" name="price"><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        
+    </main>
+
+    <footer></footer>
+
+</body>
+</html>
