@@ -3,7 +3,8 @@ const Mongoose  = require('mongoose');
 const mongoSchema = Mongoose.Schema({
     Name : {
         type : String,
-        required : true
+        required : [true,'Name is required'],
+        unique : true
     },
 /*
     HSN : {
@@ -12,12 +13,12 @@ const mongoSchema = Mongoose.Schema({
 */
     Quantity : {
         type : Number,
-        required : true
+        required : [true,'quantity is required']
     },
 
     Rate : {
         type : Number,
-        required : true
+        required : [true, 'Rate is required']
     }
 }, { timestamps: true });
 

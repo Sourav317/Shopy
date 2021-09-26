@@ -30,9 +30,11 @@ app.use(express.static('assets'));
 
 //Routes
 const post = require('./Routes/Posts.js');
+const user_route = require('./Routes/User_routes.js');
 
 //middleware
 app.use('/p',post);
+app.use('/user',user_route);
 
 
 //Connecting to DB(Atlas - Modify password and database created name)
@@ -59,6 +61,7 @@ app.get("/",(req,res)=>{
     axios.get('http://localhost:5000/p/find')
         .then(function(response){
             console.log(response.data);
+            status : 'success';
             res.render('index', { users : response.data });
         })
         .catch(err =>{
