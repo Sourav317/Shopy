@@ -2,7 +2,12 @@ const user = require('./../Models/users');
 
 exports.signup = async (req,res,next) =>{
     try{
-    const new_user = await user.create(req.body);
+    const new_user = await user.create({
+        name : req.body.name,
+        email : req.body.email,
+        password : req.body.password,
+        passwordConfirm : req.body.passwordConfirm
+    });
     
     console.log("user successfully inserted as data ",new_user);
     
