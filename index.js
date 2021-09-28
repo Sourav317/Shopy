@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const axios = require('axios');
+require ('dotenv').config();
 var bodyParser = require('body-parser')
 
 //inbuild node dependency
@@ -38,7 +39,7 @@ app.use('/user',user_route);
 
 
 //Connecting to DB(Atlas - Modify password and database created name)
-const Db = 'mongodb+srv://Onizuka:GreatTeacherOnizuka@cluster0.qvxs5.mongodb.net/Product_List?retryWrites=true&w=majority'
+const Db = process.env.DATABASE;
 mongoose.connect(Db,{
     useNewUrlParser: true,
     useCreateIndex:true,

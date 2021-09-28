@@ -1,4 +1,5 @@
 const user = require('./../Models/users');
+const jwt = require('jsonwebtoken');
 
 exports.signup = async (req,res,next) =>{
     try{
@@ -10,9 +11,14 @@ exports.signup = async (req,res,next) =>{
     });
     
     console.log("user successfully inserted as data ",new_user);
+
+    const token = jwt.sign({ id : new_user._id }, process.env.JWT_SECRET, {
+        expiresIn : "10h"
+    });
     
     res.status(201).json({
         status : 'success',
+        token,
         body : {
             Tuna : new_user
         }
