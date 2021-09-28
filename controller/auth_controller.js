@@ -15,7 +15,7 @@ exports.signup = async (req,res,next) =>{
     console.log("user successfully inserted as data ",new_user);
 //                  (can be anything)Payload       +  secrect(here 32 unit long)   +  expiresin
     const token = jwt.sign({ id : new_user._id }, process.env.JWT_SECRET, {
-        expiresIn : "10h"
+        expiresIn : "90d"
     });
     
     res.status(201).json({
@@ -53,12 +53,15 @@ exports.login = catchAsync(async (req, res, next) => {
     }
   
     // 3) If everything ok, send token to client
-    createSendToken(user, 200, res);
-    /*
-    const token = '';
+    //createSendToken(user, 200, res);
+
+    let token = jwt.sign({ id : User._id }, process.env.JWT_SECRET, {
+        expiresIn : "90d"
+    });
+    
+    //const token = '';
     res.status(200).json({
         status : 'success',
         token
-    })
-    */
+    });
   });

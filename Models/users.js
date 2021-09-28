@@ -47,5 +47,14 @@ UserSchema.pre('save', async function(next) {
   });
 
 
+//Creating ann instance
+UserSchema.methods.correctPassword = async function(
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+
 const User = Mongoose.model('User', UserSchema);
 module.exports = User;
