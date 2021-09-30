@@ -3,7 +3,8 @@
 const express = require('express');
 const router = express.Router();
 const Urs = require('../Models/connect');
-
+const product_controller = require('./../controller/product_controller');
+const auth_controller = require('./../controller/auth_controller');
 
 /*
 router.get('/',(req,res) =>{
@@ -64,35 +65,9 @@ router.post('/new',(req,res) =>{
 
 
 //retrieve and return all users
-router.get('/find',(req,res) =>{
-    //for particular item
-    if(req.query.id){
-        const id = req.query.id;
-        console.log(id);
-        Urs.findById(id)
-            .then(data =>{
-                if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
-                }else{
-                    res.send(data);
-                }
-            })
-            .catch(err =>{
-                res.status(500).send({ message: "Erro retrieving user with id " + id})
-            })
-
-    }
-    else{    
-        // will show all the data in db
-        Urs.find()
-            .then(arr => {
-                res.send(arr)
-            })
-            .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
-            })
-    }
-});
+//adding checking middleware to see if the user is logged in with valid credentials to access the 
+//protected route which is getallproducts here
+router.get('/find',auth_controller.checkUser,product_controller.getallproducts);
 
 
 // Update a new idetified user by user id

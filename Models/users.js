@@ -47,7 +47,7 @@ UserSchema.pre('save', async function(next) {
   });
 
 
-//Creating ann instance
+//Creating an instance
 UserSchema.methods.correctPassword = async function(
   candidatePassword,
   userPassword

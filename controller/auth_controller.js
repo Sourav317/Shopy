@@ -39,7 +39,7 @@ exports.login = catchAsync(async (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
   
-    // 1) Check if email and password entered by user
+    // 1) Check if email and password entered by user i.e., both the fields have to be entered by the user and not just one
     if (!email || !password) {
       return next(new AppError('Please provide email and password!', 400));
     }
@@ -65,3 +65,29 @@ exports.login = catchAsync(async (req, res, next) => {
         token
     });
   });
+
+
+  //for checking the user is logged in or not with valid token
+  exports.checkUser = catchAsync(async (req, res, next) => {
+      // 1) Getting token and check of it's there
+  let token;
+  if (
+    req.headers.authorization && req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  }
+
+  if (!token) {
+    return next(
+      new AppError('You are not logged in! Please log in to get access.', 401)
+    );
+  }
+  
+  next();
+});
+
+// 2) Verification token
+
+ // 3) Check if user still exists
+
+ // 4) Check if user changed password after the token was issued
