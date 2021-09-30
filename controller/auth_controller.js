@@ -1,3 +1,4 @@
+const { promisify } = require('util');
 const User = require('../Models/users');
 const jwt = require('jsonwebtoken');
 const catchAsync = require('../utils/catchAsync');
@@ -84,7 +85,10 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   // 2) Verification token
+  //promisify coming from utility
 const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+// decoded will be an object which will contain our payload(i.e., User_id here)
+//console.log(decoded);
 
 // 3) Check if user still exists
 
