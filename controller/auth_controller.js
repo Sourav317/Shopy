@@ -1,8 +1,8 @@
 const { promisify } = require('util');
 const User = require('../Models/users');
 const jwt = require('jsonwebtoken');
-const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./../utils/appError');
 
 exports.signup = async (req,res,next) =>{
     try{
@@ -56,7 +56,7 @@ exports.login = catchAsync(async (req, res, next) => {
     // 3) If everything ok, send token to client
     //createSendToken(user, 200, res);
 
-    let token = jwt.sign({ id : User._id }, process.env.JWT_SECRET, {
+    let token = jwt.sign({ id : user._id }, process.env.JWT_SECRET, {
         expiresIn : "90d"
     });
     
