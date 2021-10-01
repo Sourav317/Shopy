@@ -27,10 +27,37 @@ exports.getallproducts = (req,res)=>{
         Urs.find()
             .then(arr => {
                 console.log(arr);
-                res.send(arr);
+                res.send({
+                    Size: arr.length,
+                    data:{
+                        Tuna : arr
+                    }
+                });
             })
             .catch(err => {
                 res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
             })
     }
+};
+
+
+//for deleting a product
+exports.deleteProduct = (req, res)=>{
+    const id = req.params.id;
+
+    Urs.findByIdAndDelete(id)
+        .then(data => {
+            if(!data){
+                res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
+            }else{
+                res.send({
+                    message : "User was deleted successfully!"
+                })
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message: "Could not delete User with id=" + id
+            });
+        });
 };

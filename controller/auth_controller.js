@@ -11,7 +11,8 @@ exports.signup = async (req,res,next) =>{
         email : req.body.email,
         password : req.body.password,
         passwordConfirm : req.body.passwordConfirm,
-        passwordChangedAt : req.body.passwordChangedAt
+        role : req.body.role
+        //passwordChangedAt : req.body.passwordChangedAt
     });
     
     console.log("user successfully inserted as data ",new_user);
@@ -117,3 +118,17 @@ req.user = currentUser;
   next();
 });
 
+
+// As we cant pass arguments into middlewares, so to resolve we need wrapper function 
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    // roles ['admin']. role='user'
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError('You do not have permission to perform this action', 403)
+      );
+    }
+
+    next();
+  };
+};
