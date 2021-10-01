@@ -30,7 +30,8 @@ const UserSchema = Mongoose.Schema({
           },
           message: 'Passwords are not the same!'
         }
-      }
+      },
+      passwordChangedAt: Date
 });
 
 UserSchema.pre('save', async function(next) {
@@ -53,6 +54,20 @@ UserSchema.methods.correctPassword = async function(
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+
+//an Instance to check if the user changed password afer logging into the app
+//so he should not be allowed into the protected route
+UserSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000,10);
+
+    return JWTTimestamp < changedTimestamp;
+  }
+
+  // False means NOT changed
+  return false;
 };
 
 
