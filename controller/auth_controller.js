@@ -10,7 +10,8 @@ exports.signup = async (req,res,next) =>{
         name : req.body.name,
         email : req.body.email,
         password : req.body.password,
-        passwordConfirm : req.body.passwordConfirm
+        passwordConfirm : req.body.passwordConfirm,
+        passwordChangedAt : req.body.passwordChangedAt
     });
     
     console.log("user successfully inserted as data ",new_user);

@@ -31,7 +31,9 @@ const UserSchema = Mongoose.Schema({
           message: 'Passwords are not the same!'
         }
       },
-      passwordChangedAt: Date
+      passwordChangedAt: {
+        type : Date
+      }
 });
 
 UserSchema.pre('save', async function(next) {
