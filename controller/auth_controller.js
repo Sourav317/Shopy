@@ -91,6 +91,18 @@ const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 //console.log(decoded);
 
 // 3) Check if user still exists
+//what if the user was deleted after the token was issued.....user was naughty one
+//if the token was stolen and the user decided to change his password
+const currentUser = await User.findById(decoded.id);
+if (!currentUser) {
+  return next(
+    new AppError(
+      'The user belonging to this token does no longer exist.',
+      401
+    )
+  );
+}
+
 
 // 4) Check if user changed password after the token was issued
 
