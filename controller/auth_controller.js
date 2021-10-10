@@ -190,7 +190,6 @@ res.status(200).json({
 
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
-  /*
   // 1) Get user based on the token
   const hashedToken = crypto
     .createHash('sha256')
@@ -215,5 +214,5 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   // 3) Update changedPasswordAt property for the user
   // 4) Log the user in, send JWT
   createSendToken(user, 200, res);
-  */
+  
 });
