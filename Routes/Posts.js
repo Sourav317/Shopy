@@ -1,4 +1,4 @@
-//https://www.youtube.com/watch?v=vjf774RKrLc&t=668s
+//https://www.youtube.com/watch?v=QtrRTm_L33Q&t=4468s&ab_channel=Coder%27sGyan
 
 const express = require('express');
 const router = express.Router();
@@ -67,7 +67,10 @@ router.post('/new',(req,res) =>{
 //retrieve and return all users
 //adding checking middleware to see if the user is logged in with valid credentials to access the 
 //protected route which is getallproducts here
-router.get('/find',auth_controller.checkUser,product_controller.getallproducts);
+// Changed on 19-10 for testing uncomment
+//router.get('/find',auth_controller.checkUser,product_controller.getallproducts);
+
+router.get('/find',product_controller.getallproducts);
 
 
 // Update a new idetified user by user id

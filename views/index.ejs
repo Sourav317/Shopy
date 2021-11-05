@@ -10,7 +10,7 @@
 <body>
     <nav> 
         <div class = "container-nav">
-             Ambika's Store
+              Store
              <div class="cart-item">
                  <a href ="/cart">Cart <span>0</span>
                  </a>
@@ -32,17 +32,18 @@
                             <td>Quantity</td>
                             <td>Action</td>
                         </tr>
+                        <!-- <%= console.log("here data is ", users.data.Tuna[0].Name) %> -->
                         <tbody class="table-data">
-                            <% for(var i = 0; i < users.length; i++) { %>
+                            <% for(var i = 0; i < users.data.Tuna.length; i++) { %>
                                 <tr>
-                                    <td class ="item-name"><%= users[i].Name %></td>
-                                    <td class ="item-rate"><%= users[i].Rate %></td>
-                                    <td class ="item-quantity"><%= users[i].Quantity %></td>
+                                    <td class ="item-name"><%= users.data.Tuna[i].Name %></td>
+                                    <td class ="item-rate"><%= users.data.Tuna[i].Rate %></td>
+                                    <td class ="item-quantity"><%= users.data.Tuna[i].Quantity %></td>
                                     <td class="action-btn">
                                         <a href="#" class="action-btn-add"> + </a> 
-                                        <!--<button> - </button> 
+                                       <!-- <button> - </button> 
                                         <button> up</button>
-                                        -->
+                                    -->   
                                     </td>
                                 </tr>
                                 <% } %>
@@ -59,6 +60,6 @@
 
 
 
-<script type="text/javascript" src="js/functionality.js"> </script>
+<!--<script type="text/javascript" src="js/functionality.js"> </script>-->
 </body>
 </html>
