@@ -66,7 +66,7 @@ app.use(
     store: MongoStore.create({ mongoUrl: process.env.DATABASE ,
         collection: 'sessions'}),
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hour
+    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hour   once the cookie expires the session will be closed n there wil be no data of the user
 })
 )
 

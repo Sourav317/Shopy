@@ -40,7 +40,7 @@
                                     <td class ="item-rate"><%= users.data.Tuna[i].Rate %></td>
                                     <td class ="item-quantity"><%= users.data.Tuna[i].Quantity %></td>
                                     <td class="action-btn">
-                                        <a href="#" class="action-btn-add"> + </a> 
+                                        <a href="#" data-prod_detail="<%= JSON.stringify(users.data.Tuna[i]) %>" class="action-btn-add"> + </a> 
                                        <!-- <button> - </button> 
                                         <button> up</button>
                                     -->   
@@ -60,6 +60,6 @@
 
 
 
-<!--<script type="text/javascript" src="js/functionality.js"> </script>-->
+<script type="text/javascript" src="js/functionality.js"> </script>
 </body>
 </html>
